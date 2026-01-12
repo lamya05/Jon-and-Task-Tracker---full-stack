@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup - Job Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Create Account</h2>
+
+       <form id="signupForm">
+    <input type="text" id="username" placeholder="Enter Name" required>
+    <input type="email" id="email" placeholder="Enter Email" required>
+    <input type="password" id="password" placeholder="Enter password" required>
+    <button type="submit">Create Account</button>
+</form>
+
+<script src="script.js"></script>
+
+        <p>Already have an account?
+            <a href="login.html">Login</a>
+        </p>
+    </div>
+    <script src="signup.js"></script> 
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    
+    document.getElementById('nameError').innerText = "";
+    document.getElementById('emailError').innerText = "";
+    document.getElementById('passwordError').innerText = "";
+
+    let isValid = true;
+
+    // Validation checks
+    if (name.trim() === "") {
+        document.getElementById('nameError').innerText = "Name is required";
+        isValid = false;
+    }
+    if (email.trim() === "") {
+        document.getElementById('emailError').innerText = "Email is required";
+        isValid = false;
+    }
+    if (password.length < 6) {
+        document.getElementById('passwordError').innerText = "Password must be at least 6 characters";
+        isValid = false;
+    }
+
+    
+    if (isValid) {
+        alert("Account Created Successfully! Redirecting to Login...");
+        
+        
+        window.location.href = "login.html"; 
+    }
+});
+
+
+    </script>
+</body>
+</html>
